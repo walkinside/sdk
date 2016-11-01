@@ -1,0 +1,6 @@
+{
+  "name": "COMOS Walkinside SDK",
+  "tagline": "Develop powerful applications on top of Walkinside 3D engine",
+  "body": "COMOS Walkinside is a [powerful 3D real-time viewer for large complex models](http://walkinside.com).\r\nIt was designed to be extensible from the beginning, with a wide range of APIs available to developers. \r\n\r\nThis repository is a hub for learning how to develop on top of Walkinside.\r\nIt is also the place to discuss SDK matters with Walkinside core developers,\r\npropose improvements and get in touch with other SDK users.\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
