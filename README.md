@@ -6,3 +6,5 @@ It was designed to be extensible from the beginning, with a wide range of APIs a
 This repository is a hub for learning how to develop on top of Walkinside.
 It is also the place to discuss SDK matters with Walkinside core developers,
 propose improvements and get in touch with other SDK users.
+
+Find more at https://walkinside.github.io/sdk/
