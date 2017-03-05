@@ -82,6 +82,7 @@ $(document).ready(function(){initNavTree('policy.html','');});
 <li>None</li>
 <li>Preview</li>
 <li>Official</li>
+<li>Deprecated</li>
 <li>Discontinued</li>
 </ul>
 <p>"Preview" APIs do not get any compatibility guarantees. "Best effort" is provided to avoid gratuitous incompatibility.</p>
@@ -103,6 +104,9 @@ $(document).ready(function(){initNavTree('policy.html','');});
 <li>Source compatibility is maintained on a "best effort" basis, but is not guaranteed.</li>
 </ul>
 <p>API that becomes "official" in some release does not have to maintain compatibility with previous releases, as they were just "preview".</p>
+<p>"Deprecated" APIs are official APIs that are being phased out. Normally there is some alternative API to achieve same tasks. Deprecated APIs can be expected to be discontinued in the closest SP0 release. If you rely on an API that has been deprecated and you do not find a good alternative</p><ul>
+<li>please raise your concerns at <a href="https://github.com/walkinside/sdk/issues">https://github.com/walkinside/sdk/issues</a> or otherwise contact us.</li>
+</ul>
 <p>"Discontinued" APIs do not get any guarantees or support and are not actually considered as APIs anymore.</p>
 <p>Like any complex software, Walkinside has a number of internal interfaces between components. Those are not considered APIs and their use by 3rd-parties technically is reverse engineering, so is unsupported (support level "None"). These are some interfaces known to be internal:</p>
 <ul>
@@ -115,7 +119,6 @@ $(document).ready(function(){initNavTree('policy.html','');});
 <h2>Recognized Walkinside APIs </h2>
 <p>As of version 10.2, Walkinside provides several APIs:</p>
 <ul>
-<li><b>Exporter SDK API (C and .NET bindings)</b>: intended for developing Walkinside builders - converters from various CAD formats to Walkinside format.</li>
 <li><b>Viewer SDK API</b>: intended for developing Walkinside plug-ins and alternative Walkinside viewer-like applications.</li>
 <li><b>Data SDK API</b>: intended for accessing Walkinside project data in data-centric and non-interactive scenarios.</li>
 <li><b>Core SDK API</b>: intended to augment Viewer SDK API with custom model rendering capabilities.</li>
@@ -124,7 +127,7 @@ $(document).ready(function(){initNavTree('policy.html','');});
 <li><b>CLI (command-line interfaces)</b>: intended for batch scripting and automation. Provided by the following applications:<ul>
 <li>Viewer</li>
 <li>Builder for PDMS, batch mode</li>
-<li>Builder for JT, batch mode</li>
+<li>Builder Tool</li>
 <li>MicroStation Exporter plug-in, batch mode</li>
 <li>PDS Exporter plug-in, batch mode</li>
 <li>SP3D Extractor</li>
@@ -134,16 +137,12 @@ $(document).ready(function(){initNavTree('policy.html','');});
 </ul>
 </li>
 </ul>
-<p>As of 10.2 (early 2016), Walkinside APIs are assigned the following status:</p>
+<p>As of 10.2 SP1 (early 2017), Walkinside APIs are assigned the following status:</p>
 <table class="doxtable">
 <tr>
 <th>API </th><th>Status  </th></tr>
 <tr>
 <td>Builder for PDMS CLI </td><td>official </td></tr>
-<tr>
-<td>MicroStation Exporter plug-in CLI </td><td>official </td></tr>
-<tr>
-<td>PDS Exporter plug-in CLI </td><td>official </td></tr>
 <tr>
 <td>Viewer SDK API </td><td>official </td></tr>
 <tr>
@@ -153,11 +152,9 @@ $(document).ready(function(){initNavTree('policy.html','');});
 <tr>
 <td>Project Data Transfer Tool CLI </td><td>official (was "preview" in 7.0) </td></tr>
 <tr>
-<td>Builder for JT CLI </td><td>preview </td></tr>
+<td>Builder Tool CLI </td><td>preview (new in 10.2 SP1) </td></tr>
 <tr>
 <td>Data SDK API </td><td>preview </td></tr>
-<tr>
-<td>Exporter SDK API (C and .NET bindings) </td><td>preview </td></tr>
 <tr>
 <td>Viewer CLI </td><td>preview </td></tr>
 <tr>
@@ -169,7 +166,15 @@ $(document).ready(function(){initNavTree('policy.html','');});
 <tr>
 <td>Virtual Room Service CLI </td><td>preview (new in 10.2) </td></tr>
 <tr>
+<td>MicroStation Exporter plug-in CLI </td><td>deprecated (was "official" in 10.2) </td></tr>
+<tr>
+<td>PDS Exporter plug-in CLI </td><td>deprecated (was "official" in 10.2) </td></tr>
+<tr>
+<td>Builder for JT CLI </td><td>discontinued (was "preview" in 10.2) </td></tr>
+<tr>
 <td>Engine SDK API (C++ bindings) </td><td>discontinued (was "preview" in 7.0) </td></tr>
+<tr>
+<td>Exporter SDK API (C and .NET bindings) </td><td>discontinued (was "preview" in 10.2) </td></tr>
 </table>
 <h2>Examples </h2>
 <p>Below are examples of deprecation and removal of API members. For the purpose of examples, this sequence of releases is used:</p>
@@ -205,7 +210,7 @@ $(document).ready(function(){initNavTree('policy.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Tue May 3 2016 16:22:34 for COMOS Walkinside APIs by
+    <li class="footer">Generated on Mon Feb 13 2017 17:31:57 for COMOS Walkinside APIs by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>
