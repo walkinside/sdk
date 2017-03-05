@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0"
+         DefaultTargets="Build"
+         InitialTargets="CheckWalkinsideSDK"
+         xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!--In case of Walkinside Developer, import DataSdkExamples.Developer.Properties.proj-->
   <Import Condition="  Exists('../DataSdkExamples.Developer.Properties.proj') " Project="../DataSdkExamples.Developer.Properties.proj" />
   <!--In case of Walkinside SDK User, import DataSdkExamples.User.Properties.proj-->

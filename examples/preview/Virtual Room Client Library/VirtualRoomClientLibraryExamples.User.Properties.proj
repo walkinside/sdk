@@ -1,54 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="CheckWalkinsideSDK" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Choose>
-    <When Condition =" Exists('$(registry:HKEY_CURRENT_USER\Software\COMOS\COMOS Walkinside 10.2 (64 bit)\10.2.0.0@path)')">
-      <PropertyGroup>
-        <VRWalkinsideInstallationPathX64>$(registry:HKEY_CURRENT_USER\Software\COMOS\COMOS Walkinside 10.2 (64 bit)\10.2.0.0@path)</VRWalkinsideInstallationPathX64>
-      </PropertyGroup>
-    </When>
-    <When Condition =" Exists('$(registry:HKEY_LOCAL_MACHINE\Software\COMOS\COMOS Walkinside 10.2 (64 bit)\10.2.0.0@path)')">
-      <PropertyGroup>
-        <VRWalkinsideInstallationPathX64>$(registry:HKEY_LOCAL_MACHINE\Software\COMOS\COMOS Walkinside 10.2 (64 bit)\10.2.0.0@path)</VRWalkinsideInstallationPathX64>
-      </PropertyGroup>
-    </When>
-  </Choose>
-  <Choose>
-    <When Condition =" Exists('$(registry:HKEY_CURRENT_USER\Software\COMOS\COMOS Walkinside 10.2\10.2.0.0@path)')">
-      <PropertyGroup>
-        <VRWalkinsideInstallationPathX86>$(registry:HKEY_CURRENT_USER\Software\COMOS\COMOS Walkinside 10.2\10.2.0.0@path)</VRWalkinsideInstallationPathX86>
-      </PropertyGroup>
-    </When>
-    <When Condition =" Exists('$(registry:HKEY_LOCAL_MACHINE\Software\COMOS\COMOS Walkinside 10.2\10.2.0.0@path)')">
-      <PropertyGroup>
-        <VRWalkinsideInstallationPathX86>$(registry:HKEY_LOCAL_MACHINE\Software\COMOS\COMOS Walkinside 10.2\10.2.0.0@path)</VRWalkinsideInstallationPathX86>
-      </PropertyGroup>
-    </When>
-  </Choose>
-  <PropertyGroup>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-  </PropertyGroup>
-  <PropertyGroup Condition =" '$(VRWalkinsideInstallationPathX64)' != '' ">
-    <VRAppOutputPathX64>$(VRWalkinsideInstallationPathX64)\</VRAppOutputPathX64>
-    <VRPluginOutputPathX64>$(VRWalkinsideInstallationPathX64)\plugins\application\</VRPluginOutputPathX64>
-    <VRVirtualRoomClientLibraryHintPathX64>$(VRWalkinsideInstallationPathX64)\walkinside.its.protocol.dll</VRVirtualRoomClientLibraryHintPathX64>
-  </PropertyGroup>
-  <PropertyGroup Condition =" '$(VRWalkinsideInstallationPathX86)' != '' ">
-    <VRAppOutputPathX86>$(VRWalkinsideInstallationPathX86)\</VRAppOutputPathX86>
-    <VRPluginOutputPathX86>$(VRWalkinsideInstallationPathX86)\plugins\application\</VRPluginOutputPathX86>
-    <VRVirtualRoomClientLibraryHintPathX86>$(VRWalkinsideInstallationPathX86)\walkinside.its.protocol.dll</VRVirtualRoomClientLibraryHintPathX86>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Platform)' == 'x64' ">
-    <VRAppOutputPath>$(VRAppOutputPathX64)</VRAppOutputPath>
-    <VRPluginOutputPath>$(VRPluginOutputPathX64)</VRPluginOutputPath>
-    <VRVirtualRoomClientLibraryHintPath>$(VRVirtualRoomClientLibraryHintPathX64)</VRVirtualRoomClientLibraryHintPath>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
-    <VRAppOutputPath>$(VRAppOutputPathX86)</VRAppOutputPath>
-    <VRPluginOutputPath>$(VRPluginOutputPathX86)</VRPluginOutputPath>
-    <VRVirtualRoomClientLibraryHintPath>$(VRVirtualRoomClientLibraryHintPathX86)</VRVirtualRoomClientLibraryHintPath>
-  </PropertyGroup>
-  <Target Name="CheckWalkinsideSDK" >
-    <Error Text="Cannot find COMOS Walkinside Virtual Room Client Library."
-           Condition=" !Exists('$(VRVirtualRoomClientLibraryHintPath)') " />
-  </Target>
+  <Import Project="SdkExamples.User.Properties.proj" />
+  <Target Name="CheckWalkinsideSDK"
+          DependsOnTargets="RequireVirtualRoomClientLibrary" />
 </Project>

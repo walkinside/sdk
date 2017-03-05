@@ -19,7 +19,7 @@ namespace WIExample
         {
             InitializeComponent();
             // Create a menu item in the 3D Context Menu, called "Example 7".
-            m_Item = SDKViewer.UI.ContextMenu3D.Items.Add("Example 7") as ToolStripMenuItem;
+            m_Item = SDKViewer.UI.Control.ContextMenuStrip.Items.Add("Example 7") as ToolStripMenuItem;
             // Create sub menu items to create and destroy labels.
             m_ItemCreate = m_Item.DropDownItems.Add("Create Label");
             m_ItemDestroy = m_Item.DropDownItems.Add("Destroy Label");
@@ -38,7 +38,7 @@ namespace WIExample
         void m_ItemDestroy_Click(object sender, EventArgs e)
         {
             // Get the click information from the Tag property as a VRRaycastResult type.
-            VRRayCastResult res = SDKViewer.UI.ContextMenu3D.Tag as VRRayCastResult;
+            VRRayCastResult res = SDKViewer.UI.Control.ContextMenuStrip.Tag as VRRayCastResult;
             IVRLabel label = null;
 
             // Try to get the label instance matching the ID. If not found, probably user clicked on a walkinside redline, or a label from other plugin.
@@ -62,7 +62,7 @@ namespace WIExample
         void m_ItemCreate_Click(object sender, EventArgs e)
         {
             // Get the click information from the Tag property as a VRRaycastResult type.
-            VRRayCastResult res = SDKViewer.UI.ContextMenu3D.Tag as VRRayCastResult;
+            VRRayCastResult res = SDKViewer.UI.Control.ContextMenuStrip.Tag as VRRayCastResult;
 
             // Create the label at the location the user clicked, and set the text of the label to "New Label" and a next line with the position.
             IVRLabel label = m_LabelGroup.Add("New Label\n"+res.Position.ToString("f2"), res.Position);
@@ -79,7 +79,7 @@ namespace WIExample
             m_ItemDestroy.Click -= new EventHandler(m_ItemDestroy_Click);
 
             // Remove the menu item "Example 7" from the 3D Context Menu.
-            SDKViewer.UI.ContextMenu3D.Items.Remove(m_Item);
+            SDKViewer.UI.Control.ContextMenuStrip.Items.Remove(m_Item);
 
 
             m_Labels.Clear(); // clear the dictionary, no need for it anymore.

@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0"
+         DefaultTargets="Build"
+         InitialTargets="CheckWalkinsideSDK"
+         xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <!--In case of Walkinside Developer, import VirtualRoomClientLibraryExamples.Developer.Properties.proj-->
   <Import Condition="  Exists('../VirtualRoomClientLibraryExamples.Developer.Properties.proj') " Project="../VirtualRoomClientLibraryExamples.Developer.Properties.proj" />
   <!--In case of Walkinside SDK User, import VirtualRoomClientLibraryExamples.User.Properties.proj-->

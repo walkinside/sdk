@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example 1. Project Overview", "Example 1. Project Overview\Example 1. Project Overview.csproj", "{31971997-5022-4D89-B424-2F56054BFAFC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example 2. FRT Generation", "Example 2. FRT Generation\Example 2. FRT Generation.csproj", "{9BA095B8-B6E9-42D8-B785-20B5212512B9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31971997-5022-4D89-B424-2F56054BFAFC}.Debug|x86.ActiveCfg = Debug|x86
+		{31971997-5022-4D89-B424-2F56054BFAFC}.Debug|x86.Build.0 = Debug|x86
+		{31971997-5022-4D89-B424-2F56054BFAFC}.Release|x86.ActiveCfg = Release|x86
+		{31971997-5022-4D89-B424-2F56054BFAFC}.Release|x86.Build.0 = Release|x86
+		{9BA095B8-B6E9-42D8-B785-20B5212512B9}.Debug|x86.ActiveCfg = Debug|x86
+		{9BA095B8-B6E9-42D8-B785-20B5212512B9}.Debug|x86.Build.0 = Debug|x86
+		{9BA095B8-B6E9-42D8-B785-20B5212512B9}.Release|x86.ActiveCfg = Release|x86
+		{9BA095B8-B6E9-42D8-B785-20B5212512B9}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

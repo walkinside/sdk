@@ -90,11 +90,12 @@ namespace VirtualRoomClientLibraryExamples
                     .JoinRoomAsync(
                         roomAddress.Port,
                         asInstructor: false,
-                        name: bot.Name,
+                        avatarName: bot.Name,
                         projectName: projectName,
+                        peerTag: "WalkinsideViewer/10.2.33",
                         // We only have 8 characters in Walkinside viewer.
-                        characterName: string.Format("char{0}", bot.Index % 8), 
-                        skinName: "skin0",
+                        avatarModelName: string.Format("char{0}", bot.Index % 8), 
+                        avatarSkinName: "skin0",
                         gravityOn: false,
                         pathOn: false)
                     .GetAwaiter()
@@ -149,7 +150,7 @@ namespace VirtualRoomClientLibraryExamples
                 Console.WriteLine(
                     "{0} | Login result: {1}",
                     self.Name,
-                    eventArgs.Message.StatusCode);
+                    eventArgs.StatusCode);
             };
 
             client.AvatarAdded += (_, eventArgs) =>
@@ -160,14 +161,14 @@ namespace VirtualRoomClientLibraryExamples
                 }
 
                 // Need a leader.
-                var name = new string(eventArgs.Message.Name, 0, eventArgs.Message.NameLength);
+                var name = eventArgs.AvatarName;
                 Debug.Assert(!string.IsNullOrWhiteSpace(name)); 
                 if (name.Contains("(bot #"))
                 {
                     return; // Looks like a bot, cannot be my leader.
                 }
 
-                self.LeaderAvatarId = eventArgs.Message.AvatarId;
+                self.LeaderAvatarId = eventArgs.AvatarId;
                 Console.WriteLine("{0} | Now following {1}...", self.Name, name);
             };
 
@@ -187,37 +188,38 @@ namespace VirtualRoomClientLibraryExamples
                 var myIndex = self.Index;
                 var botCount = this.botsByName.Count;
 
-                if (eventArgs.Message.AvatarId != self.LeaderAvatarId)
+                if (eventArgs.AvatarId != self.LeaderAvatarId)
                 {
                     return;
                 }
 
                 
                 bool shouldSendUpdate = false;
-                if ((eventArgs.Message.StateCode & AvatarStateCode.PositionChanged) != 0)
+                if (eventArgs.IsPositionChanged)
                 {
                     var xDelta = distanceFromLeader * Math.Cos(myIndex * (2 * Math.PI / botCount));
                     var zDelta = distanceFromLeader * Math.Sin(myIndex * (2 * Math.PI / botCount));
+                    var positon = eventArgs.Position;
                     var newPosition = new[]
                     {
-                        eventArgs.Message.Position[0] + xDelta,
-                        eventArgs.Message.Position[1],
-                        eventArgs.Message.Position[2] + zDelta,
+                        positon[0] + xDelta,
+                        positon[1],
+                        positon[2] + zDelta,
                     };
                     self.CurrentPosition = newPosition;
 
                     shouldSendUpdate = true;
                 }
 
-                if ((eventArgs.Message.StateCode & AvatarStateCode.AnimationChanged) != 0)
+                if (eventArgs.IsAnimationChanged)
                 {
-                    self.CurrentAnimationId = eventArgs.Message.AnimationId;
+                    self.CurrentAnimationId = eventArgs.AnimationId;
                     shouldSendUpdate = true;
                 }
 
-                if ((eventArgs.Message.StateCode & AvatarStateCode.RotationChanged) != 0)
+                if (eventArgs.IsRotationChanged)
                 {
-                    self.CurrentRotation = eventArgs.Message.Rotation;
+                    self.CurrentRotation = eventArgs.Rotation;
                     shouldSendUpdate = true;
                 }
 

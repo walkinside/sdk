@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example 1. Simple Info Overlay", "Example 1. Simple Info Overlay\Example 1. Simple Info Overlay.csproj", "{A085DA23-08F6-4977-BB28-D4837353371A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example 2. Countdown", "Example 2. Countdown\Example 2. Countdown.csproj", "{43D3FED5-3C92-4DCC-B47E-5C89F21A0E12}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Example 3. Nightclub", "Example 3. Nightclub\Example 3. Nightclub.csproj", "{CEA04F87-77DA-42F8-9E54-40575FA73567}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A085DA23-08F6-4977-BB28-D4837353371A}.Debug|x86.ActiveCfg = Debug|x86
+		{A085DA23-08F6-4977-BB28-D4837353371A}.Debug|x86.Build.0 = Debug|x86
+		{A085DA23-08F6-4977-BB28-D4837353371A}.Release|x86.ActiveCfg = Release|x86
+		{A085DA23-08F6-4977-BB28-D4837353371A}.Release|x86.Build.0 = Release|x86
+		{43D3FED5-3C92-4DCC-B47E-5C89F21A0E12}.Debug|x86.ActiveCfg = Debug|x86
+		{43D3FED5-3C92-4DCC-B47E-5C89F21A0E12}.Debug|x86.Build.0 = Debug|x86
+		{43D3FED5-3C92-4DCC-B47E-5C89F21A0E12}.Release|x86.ActiveCfg = Release|x86
+		{43D3FED5-3C92-4DCC-B47E-5C89F21A0E12}.Release|x86.Build.0 = Release|x86
+		{CEA04F87-77DA-42F8-9E54-40575FA73567}.Debug|x86.ActiveCfg = Debug|x86
+		{CEA04F87-77DA-42F8-9E54-40575FA73567}.Debug|x86.Build.0 = Debug|x86
+		{CEA04F87-77DA-42F8-9E54-40575FA73567}.Release|x86.ActiveCfg = Release|x86
+		{CEA04F87-77DA-42F8-9E54-40575FA73567}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Choose>
+    <When Condition =" Exists('$(registry:HKEY_CURRENT_USER\Software\COMOS\COMOS Walkinside 10.2 (64 bit)\10.2.0.0@path)')">
+      <PropertyGroup>
+        <VRWalkinsideInstallationPathX64>$(registry:HKEY_CURRENT_USER\Software\COMOS\COMOS Walkinside 10.2 (64 bit)\10.2.0.0@path)</VRWalkinsideInstallationPathX64>
+      </PropertyGroup>
+    </When>
+  </Choose>
+  <Choose>
+    <When Condition =" Exists('$(registry:HKEY_CURRENT_USER\Software\COMOS\COMOS Walkinside 10.2\10.2.0.0@path)')">
+      <PropertyGroup>
+        <VRWalkinsideInstallationPathX86>$(registry:HKEY_CURRENT_USER\Software\COMOS\COMOS Walkinside 10.2\10.2.0.0@path)</VRWalkinsideInstallationPathX86>
+      </PropertyGroup>
+    </When>
+  </Choose>
+  <PropertyGroup>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition =" '$(VRWalkinsideInstallationPathX64)' != '' ">
+    <VRPluginOutputPathX64>$(VRWalkinsideInstallationPathX64)\plugins\application\</VRPluginOutputPathX64>
+    <VRAppOutputPathX64>$(VRWalkinsideInstallationPathX64)\</VRAppOutputPathX64>
+    <VRViewerSDKHintPathX64>$(VRWalkinsideInstallationPathX64)\WalkinsideSDK2.dll</VRViewerSDKHintPathX64>
+    <VRCoreSDKHintPathX64>$(VRWalkinsideInstallationPathX64)\CoreSdkNet.dll</VRCoreSDKHintPathX64>
+    <VRWeifenLuoHintPathX64>$(VRWalkinsideInstallationPathX64)\WeifenLuo.WinFormsUI.Docking.dll</VRWeifenLuoHintPathX64>
+    <VRDataSdkHintPathX64>$(VRWalkinsideInstallationPathX64)\WalkinsideDataSDK.dll</VRDataSdkHintPathX64>
+    <VRVirtualRoomClientLibraryHintPathX64>$(VRWalkinsideInstallationPathX64)\walkinside.its.protocol.dll</VRVirtualRoomClientLibraryHintPathX64>
+  </PropertyGroup>
+  <PropertyGroup Condition =" '$(VRWalkinsideInstallationPathX86)' != '' ">
+    <VRPluginOutputPathX86>$(VRWalkinsideInstallationPathX86)\plugins\application\</VRPluginOutputPathX86>
+    <VRAppOutputPathX86>$(VRWalkinsideInstallationPathX86)\</VRAppOutputPathX86>
+    <VRViewerSDKHintPathX86>$(VRWalkinsideInstallationPathX86)\WalkinsideSDK2.dll</VRViewerSDKHintPathX86>
+    <VRCoreSDKHintPathX86>$(VRWalkinsideInstallationPathX86)\CoreSdkNet.dll</VRCoreSDKHintPathX86>
+    <VRWeifenLuoHintPathX86>$(VRWalkinsideInstallationPathX86)\WeifenLuo.WinFormsUI.Docking.dll</VRWeifenLuoHintPathX86>
+    <VRDataSdkHintPathX86>$(VRWalkinsideInstallationPathX86)\WalkinsideDataSDK.dll</VRDataSdkHintPathX86>
+    <VRVirtualRoomClientLibraryHintPathX86>$(VRWalkinsideInstallationPathX86)\walkinside.its.protocol.dll</VRVirtualRoomClientLibraryHintPathX86>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x64' ">
+    <VRPluginOutputPath>$(VRPluginOutputPathX64)</VRPluginOutputPath>
+    <VRAppOutputPath>$(VRAppOutputPathX64)</VRAppOutputPath>
+    <VRViewerSDKHintPath>$(VRViewerSDKHintPathX64)</VRViewerSDKHintPath>
+    <VRCoreSDKHintPath>$(VRCoreSDKHintPathX64)</VRCoreSDKHintPath>
+    <VRWeifenLuoHintPath>$(VRWeifenLuoHintPathX64)</VRWeifenLuoHintPath>
+    <VRDataSdkHintPath>$(VRDataSdkHintPathX64)</VRDataSdkHintPath>
+    <VRVirtualRoomClientLibraryHintPath>$(VRVirtualRoomClientLibraryHintPathX64)</VRVirtualRoomClientLibraryHintPath>
+    <vrMissingSdkMessage
+      >Do you have COMOS Walkinside 10.2 64-bit installed? (Must be a &quot;Just Me&quot; installation, not &quot;All Users&quot;)</vrMissingSdkMessage>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Platform)' == 'x86' ">
+    <VRPluginOutputPath>$(VRPluginOutputPathX86)</VRPluginOutputPath>
+    <VRAppOutputPath>$(VRAppOutputPathX86)</VRAppOutputPath>
+    <VRViewerSDKHintPath>$(VRViewerSDKHintPathX86)</VRViewerSDKHintPath>
+    <VRCoreSDKHintPath>$(VRCoreSDKHintPathX86)</VRCoreSDKHintPath>
+    <VRWeifenLuoHintPath>$(VRWeifenLuoHintPathX86)</VRWeifenLuoHintPath>
+    <VRDataSdkHintPath>$(VRDataSdkHintPathX86)</VRDataSdkHintPath>
+    <VRVirtualRoomClientLibraryHintPath>$(VRVirtualRoomClientLibraryHintPathX86)</VRVirtualRoomClientLibraryHintPath>
+    <vrMissingSdkMessage
+      >Do you have COMOS Walkinside 10.2 32-bit installed? (Must be a &quot;Just Me&quot; installation, not &quot;All Users&quot;)</vrMissingSdkMessage>
+  </PropertyGroup>
+  <Target Name="RequireViewerSdk">
+    <Error Text="Cannot find COMOS Walkinside Viewer SDK at &quot;$(VRViewerSDKHintPath)&quot;. $(vrMissingSdkMessage)"
+           Condition=" !Exists('$(VRViewerSDKHintPath)')" />
+  </Target>
+  <Target Name="RequireCoreSDK">
+    <Error Text="Cannot find COMOS Walkinside Core SDK at &quot;$(VRCoreSDKHintPath)&quot;. $(vrMissingSdkMessage)"
+           Condition=" !Exists('$(VRCoreSDKHintPath)')" />
+  </Target>
+  <Target Name="RequireDataSDK">
+    <Error Text="Cannot find COMOS Walkinside Data SDK at &quot;$(VRDataSdkHintPath)&quot;. $(vrMissingSdkMessage)"
+           Condition=" !Exists('$(VRDataSdkHintPath)') " />
+  </Target>
+  <Target Name="RequireVirtualRoomClientLibrary">
+    <Error Text="Cannot find COMOS Walkinside Virtual Room Client Library at &quot;$(VRVirtualRoomClientLibraryHintPath)&quot;. $(vrMissingSdkMessage)"
+           Condition=" !Exists('$(VRVirtualRoomClientLibraryHintPath)') " />
+  </Target>
+  <Target Name="RequireWeifenLuo">
+    <Error Text="Cannot find WeifenLuo at &quot;$(VRWeifenLuoHintPath)&quot;. $(vrMissingSdkMessage)"
+           Condition=" !Exists('$(VRWeifenLuoHintPath)')" />
+  </Target>
+</Project>

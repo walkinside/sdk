@@ -1,62 +1,54 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" InitialTargets="CheckWalkinsideSDK" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
   <!--In case of Walkinside Developer, import ViewerSdkExamples.Developer.Properties.proj-->
-  <Import Condition="  Exists('../ViewerSdkExamples.Developer.Properties.proj') " Project="../ViewerSdkExamples.Developer.Properties.proj" />
+  <Import Condition="  Exists('../CoreSdkExamples.Developer.Properties.proj') " Project="../CoreSdkExamples.Developer.Properties.proj" />
   <!--In case of Walkinside SDK User, import ViewerSdkExamples.User.Properties.proj-->
-  <Import Condition=" !Exists('../ViewerSdkExamples.Developer.Properties.proj') " Project="../ViewerSdkExamples.User.Properties.proj" />
+  <Import Condition=" !Exists('../CoreSdkExamples.Developer.Properties.proj') " Project="../CoreSdkExamples.User.Properties.proj" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{1E4D279E-F56B-4679-B0BD-CB737BCFBF92}</ProjectGuid>
+    <ProjectGuid>{CEA04F87-77DA-42F8-9E54-40575FA73567}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>WIExample</RootNamespace>
-    <AssemblyName>WIExample9</AssemblyName>
+    <RootNamespace>CoreSdkExamples</RootNamespace>
+    <AssemblyName>CoreSdkExample3</AssemblyName>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
     <OldToolsVersion>3.5</OldToolsVersion>
     <UpgradeBackupLocation>
     </UpgradeBackupLocation>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>$(VRPluginOutputPath)</OutputPath>
-    <PlatformTarget>x86</PlatformTarget>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-    <UseVSHostingProcess>true</UseVSHostingProcess>
+    <PlatformTarget>x86</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>$(VRPluginOutputPath)</OutputPath>
-    <PlatformTarget>x86</PlatformTarget>
     <DefineConstants>TRACE</DefineConstants>
+    <PlatformTarget>x86</PlatformTarget>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
     <DebugSymbols>true</DebugSymbols>
     <OutputPath>$(VRPluginOutputPath)</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
     <OutputPath>$(VRPluginOutputPath)</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <Optimize>true</Optimize>
-    <DebugType>pdbonly</DebugType>
     <PlatformTarget>x64</PlatformTarget>
-    <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
@@ -69,13 +61,34 @@
     <Reference Include="System.Xml" />
     <Reference Include="WalkinsideSDK2">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>$(VRWalkinsideSDKHintPath)</HintPath>
+      <HintPath>$(VRViewerSDKHintPath)</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CoreSdkNet">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(VRCoreSDKHintPath)</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="WeifenLuo.WinFormsUI.Docking">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>$(VRWeifenLuoHintPath)</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WIPlugin.cs" />
+    <Compile Include="NightClubForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NightClubForm.Designer.cs">
+      <DependentUpon>NightClubForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Plugin.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="NightClubForm.resx">
+      <DependentUpon>NightClubForm.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
