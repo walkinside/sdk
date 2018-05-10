@@ -52,3 +52,8 @@ Creates text labels in 3D view that can respond to mouse clicks.
 Modifies visual properties of a 3D item (color, transparency and blinking)
 for the duration of the current session.
 
+### Example 9: Entities
+
+Uses entities to persistently store the history of who opened the project.
+
+
