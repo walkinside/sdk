@@ -2,7 +2,7 @@ var NAVTREE =
 [
   [ "COMOS Walkinside APIs", "index.html", [
     [ "Welcome!", "index.html", null ],
-    [ "What's New in 10.2 SP1", "whats-new.html", null ],
+    [ "What's New in 10.2 SP3", "whats-new.html", null ],
     [ "API Compatibility Policy", "policy.html", null ]
   ] ]
 ];

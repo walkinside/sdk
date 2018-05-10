@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>COMOS Walkinside APIs: What&#39;s New in 10.2 SP1</title>
+<title>COMOS Walkinside APIs: What&#39;s New in 10.2 SP3</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -52,58 +52,38 @@ $(document).ready(function(){initNavTree('whats-new.html','');});
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">What's New in 10.2 SP1 </div>  </div>
+<div class="title">What's New in 10.2 SP3 </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>As this is a Service Pack release, it maintains compatibility guarantees relative to 10.2. You can find details of those guarantees in <a class="el" href="policy.html">API Compatibility Policy</a>.</p>
-<h2>General </h2>
-<ul>
-<li><p class="startli">Resolved <a href="https://github.com/walkinside/sdk/issues/5">issue 5</a> "Cannot find Walkinside SDK in example projects solution"</p>
-<p class="startli">Using SDK examples with "All Users" installation never worked and is problematic to support, so this release requires SDK developers to have "Just Me" COMOS Walkinside installation (or manually update assembly references and paths to their liking).</p>
-</li>
-<li>Example <code>.sln</code> files were split into 64-bit and 32-bit versions. Please use the one that matches your installed COMOS Walkinside version.</li>
-</ul>
 <h2>Viewer SDK </h2>
 <h3>Notable Additions</h3>
 <ul>
-<li><code>IVRViewerSdkForPreview</code> has a new method <code>GetProjectSettings</code>. It gives access to a settings storage, which is isolated inside a namespace from any settings of Walkinside or other plug-ins. Plug-in authors are encouraged to try it out as a possible future replacement of the deprecated <code>IVRSettingsManager</code> and let us know of any issues or suggestions.</li>
-<li><code>IVRViewerSdkForPreview</code> has a new method <code>CreateGroup</code> that creates an <code>IVRGroup</code> from multiple branches in a single call. This method is faster than calling <code>IVRGroupBuilder.Add</code> in a loop, especially for online projects.</li>
-</ul>
-<p>Full details can be found in Viewer SDK API Reference.</p>
-<h2>Core SDK </h2>
-<h3>Notable Additions</h3>
-<ul>
-<li>The <code>VolumeManager</code> was renamed to <code>ShapeManager</code> as it now allows to create 'flat' graphical entities like billboards and cross marks. Support for Axis-aligned bounding boxes, spheres as well as cones have been also added.</li>
-<li>The <code>LightManager</code> has been introduced and allows to create multiple lights in the virtual environment very easily. 3 types of lights are supported (spot, point and directional).</li>
-</ul>
-<h2>Exporter SDK </h2>
-<p>Exporter SDK API has been in "preview" mode since around 2015, but never got wider traction among SDK developers. This is partly due to lack of documentation and design, but also due to being somewhat niche.</p>
-<p>As there are no plans to improve this API towards "official" level of support and seeing how its relevance decreases thanks to new Builders added to standard Walkinside, it has been decided to officially discontinue Exporter SDK API in this release.</p>
-<h2>Virtual Room Client Library </h2>
-<h3>Notable Changes</h3>
-<ul>
-<li>Add a new parameter <code>peerTag</code> to the <code>JoinRoomAsync</code> method of <code>IDiscoveryClient</code> interface. A peer provides the <code>peerTag</code> when connecting to a virtual training room; first peer to connect to the room tags the room with its tag. Only peers matching room's tag are admitted to join the room.</li>
-</ul>
-<p>Full details can be found in Virtual Room Client Library API Reference.</p>
-<h2>Command-Line Interfaces (CLIs) </h2>
-<h3>Notable Additions</h3>
-<ul>
-<li>New <code>Builder Tool</code> was added as a unified CLI for several Walkinside Builders (main exception being <code>Builder for PDMS</code>). Please find <code>build.exe</code> in your installed folder.</li>
+<li><code>IVRViewerSdkForPreview</code> has a new method <code>UnregisterForm</code> that unregisters a form that uses a non-default constructor (constructor with arguments).</li>
+<li><code>IVRViewerSdkForPreview</code> has two new methods <code>ConvertToCustomCS</code> and <code>ConvertFromCustomCS</code> that convert internal 3D coordinates to/from custom coordinate system defined in the "World Coordinate" settings.</li>
 </ul>
 <h3>Notable Deprecations</h3>
 <ul>
-<li><code>MicroStation Exporter plug-in</code> and <code>PDS Exporter plug-in</code> CLIs were deprecated. Please use the new <code>Builder Tool</code> instead.</li>
+<li><code>VRProductInfo</code> class was deprecated because it is not useful for SDK developers.</li>
 </ul>
-<h3>Notable Removals</h3>
+<p>Full details can be found in Viewer SDK API Reference.</p>
+<h2>Data SDK </h2>
+<h3>Notable Additions</h3>
 <ul>
-<li><code>Builder for JT</code> CLI was removed and its functionality superseded by new <code>Builder Tool</code> CLI. </li>
+<li><code>IProject</code> has a new method <code>GetNamespacedSettings</code>. It gives access to a settings storage, which is isolated inside a namespace from any settings of Walkinside or other plug-ins. This is a follow-up to the addition of similar API to Viewer SDK in the previous release.</li>
+</ul>
+<p>Full details can be found in Data SDK API Reference.</p>
+<h2>Command-Line Interfaces (CLIs) </h2>
+<h3>Notable Additions</h3>
+<ul>
+<li>New <code>4D Import Tool</code> was added as a way to populate Walkinside project with 4D simulation data. Please find <code>4d.exe</code> in your installed folder. You can find more information on the new 4D simulation feature in the Viewer user manual. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Feb 13 2017 17:31:57 for COMOS Walkinside APIs by
+    <li class="footer">Generated on Fri Apr 20 2018 16:30:46 for COMOS Walkinside APIs by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>
