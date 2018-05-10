@@ -1,0 +1,97 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>COMOS WalkinsideJS Example</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0px;
+      overflow: hidden;
+    }
+
+    #wi-viewer-container {
+      float: left;
+      height: 100%;
+      width: 100%;
+    }
+
+    .info-panel-item {
+      width: 100%;
+      border-width: 0px;
+      padding: 0px;
+    }
+
+    #wi-info-panel {
+      position: absolute;
+      float: left;
+      display: block;
+      overflow: auto;
+      width: 150px;
+      opacity: 0.7;
+    }
+
+  </style>
+</head>
+
+<body onload="createView()">
+  <div id='wi-viewer-container'></div>
+  <div id="wi-info-panel">
+    <label class="info-panel-item" id="wi-selection-label" for="wi-selection-tag">Selected Tag:</label>
+    <input class="info-panel-item" type="text" id="wi-selection-tag" value="empty" />
+    <input class="info-panel-item" type="button" id="wi-select-and-fly-to" value="Select and Fly To" />
+    <input class="info-panel-item" type="button" id="wi-jump-to-home" value="Jump To Home" />
+  </div>
+  <script src="${WALKINSIDE-JS-LOCATION}/walkinside.js"></script>
+  <script>
+    function createView() {
+      console.info('creating view...');
+      walkinside.createViewAsync({
+        backendAddress: '${WALKINSIDE-JS-LOCATION}',
+        targetElementId: 'wi-viewer-container'
+      }).then(function (view) {
+        console.info('view created.');
+        console.info('loading project...');
+        return view.loadProjectAsync({
+          projectAddress: '${PROJECT-ADDRESS}'
+        });
+      }).then(function (project) {
+        console.info('project loaded:');
+        console.info(project);
+        project.on('change-selection', function (e) {
+          document.getElementById('wi-selection-tag').value = e.tagValue;
+        });
+        var selectElem = document.getElementById('wi-select-and-fly-to');
+        selectElem.addEventListener(
+          'click',
+          function () {
+            var tagElem = document.getElementById('wi-selection-tag');
+            var equipmentTagValue = tagElem.value;
+            console.info('selecting "' + equipmentTagValue + '"...');
+            project.selectAndFlyToAsync({
+              tagValue: equipmentTagValue
+            }).then(function (selectionResult) {
+              console.info('selectAndFlyToAsync result:');
+              console.info(selectionResult);
+            }).catch(console.error);
+          },
+          true);
+        var homeElem = document.getElementById('wi-jump-to-home');
+        homeElem.addEventListener(
+          'click',
+          function () {
+            console.info('jumping to home position...')
+            project.jumpToHome();
+          },
+          true);
+      });
+    }
+  </script>
+</body>
+
+</html>
