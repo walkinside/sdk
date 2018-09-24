@@ -18,6 +18,10 @@ namespace WIExample
     {
         internal static VRPluginDescriptor pDescriptor = new VRPluginDescriptor(
             VRPluginType.Unknown, 1, "", "19/01/2009", "Example 3: Plugin Form", "Walkinside Plugin Step 3.", "Vrcontext_SDK");
+
+        private IVRRegisteredCommand pCommand;
+        private MyForm pForm;
+
         /// <summary>
         /// Get the plugin descriptor without creating the plugin.
         /// </summary>
@@ -40,8 +44,6 @@ namespace WIExample
             }
         }
 
-        ToolStripMenuItem m_ToolStripItem = null;
-
         /// <summary>
         /// Called when attaching the plugin to the user interface.
         /// </summary>
@@ -54,11 +56,21 @@ namespace WIExample
         public bool CreatePlugin(IVRViewerSdk viewer)
         {
             // Create a menu item called "Example 3".
-            m_ToolStripItem = viewer.UI.PluginMenu.DropDownItems.Add("Example 3") as ToolStripMenuItem;
-            //  Register a form with the menu item created. So Walkinside will take care of the user click event handling.
-            viewer.UI.RegisterVRFormWithMenu(Keys.NoName, m_ToolStripItem, typeof(MyForm));
+            pCommand = viewer.CommandManager.RegisterPluginMenuCommand(
+                getNames: () => new[] {"Example 3"},
+                execute: () =>
+                {
+                    pForm = new MyForm
+                    {
+                        DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight
+                    };
+                    pForm.Show();
+                    pForm.Closing += (o, e) => { pForm = null; };
+                },
+                getState: () => pForm == null ? VRCommandState.Available : VRCommandState.Disabled);
             return true;
         }
+
 
 
         /// <summary>
@@ -72,11 +84,9 @@ namespace WIExample
         /// </returns>
         public bool DestroyPlugin(IVRViewerSdk viewer)
         {
-            // Remove the form registration from the menu item. This is necessary if the user disables the plugin, while it has been activated.
-            viewer.UI.UnregisterVRFORM(m_ToolStripItem, typeof(MyForm));
+            pForm?.Dispose();
             // Remove my menu item called "Example 3" from the plugin menu.
-            viewer.UI.PluginMenu.DropDownItems.Remove(m_ToolStripItem);
-            m_ToolStripItem = null;
+            pCommand.Unregister();
             return true;
         }
     }

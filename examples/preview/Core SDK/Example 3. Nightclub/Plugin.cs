@@ -34,23 +34,31 @@ namespace CoreSdkExamples
         {
             this.viewerSdk = viewerSdk;
 
-            this.menuItem = this.viewerSdk.UI.PluginMenu.DropDownItems.Add("NightClub");
-
-            this.viewerSdk.UI.RegisterVRFormWithMenu(Keys.None, (ToolStripMenuItem)menuItem, typeof(NightClubForm), this.viewerSdk);
-
+            pCommand = viewerSdk.CommandManager.RegisterPluginMenuCommand(
+                getNames: () => new[] { "NightClub" },
+                execute: () =>
+                {
+                    pForm = new NightClubForm(viewerSdk)
+                    {
+                        DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight
+                    };
+                    pForm.Show();
+                    pForm.Closing += (o, e) => { pForm = null; };
+                },
+                getState: () => pForm == null ? ViewerSdk.VRCommandState.Available : ViewerSdk.VRCommandState.Disabled);
             return true;
         }
 
         public bool DestroyPlugin(ViewerSdk.IVRViewerSdk viewerSdk)
         {
-            this.menuItem.Dispose();
-
-            this.viewerSdk.UI.UnregisterVRFORM((ToolStripMenuItem)menuItem, typeof(NightClubForm));
+            pCommand.Unregister();
+            pForm?.Dispose();
 
             return true;
         }
 
         ViewerSdk.IVRViewerSdk viewerSdk;
-        ToolStripItem menuItem = null;
+        private ViewerSdk.IVRRegisteredCommand pCommand;
+        private NightClubForm pForm;
     }
 }

@@ -9,7 +9,6 @@ namespace CoreSdkExamples
     sealed class SimpleInfoOverlayModel : CoreSdk.Model
     {
         public readonly string ProjectName;
-        public readonly string ProjectFileName;
 
         public SimpleInfoOverlayModel(
             ViewerSdk.IVRViewerSdk viewerSdk,
@@ -32,7 +31,6 @@ namespace CoreSdkExamples
             // As rendering happens in a separate thread and viewer is not thread-safe, 
             // it is recommended to cache any viewer SDK variable locally for later use in the Render method. 
             this.ProjectName = currentProject.Name;
-            this.ProjectFileName = currentProject.FileName;
 
             // Register our model for rendering.
             this.Setup();
@@ -43,11 +41,9 @@ namespace CoreSdkExamples
         {
             var text = string.Format(
                 "Project:      {0}\n" +
-                "Path:         {1}\n" +
-                "Uptime (sys): {2:g}\n" +
-                "Uptime (sim): {3:g}",
+                "Uptime (sys): {1:g}\n" +
+                "Uptime (sim): {2:g}",
                 ProjectName,
-                ProjectFileName,
                 DateTime.UtcNow - this.runningSince,
                 this.simDuration);
 

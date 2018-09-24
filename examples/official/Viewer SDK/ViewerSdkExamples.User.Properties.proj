@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="SdkExamples.User.Properties.proj" />
+  <PropertyGroup Condition="Exists($(VRWalkinsideViewerPath))">
+    <StartAction>Program</StartAction>
+    <StartProgram>$(VRWalkinsideViewerPath)</StartProgram>
+  </PropertyGroup>
   <Target Name="CheckWalkinsideSDK"
           DependsOnTargets="
             RequireViewerSdk;

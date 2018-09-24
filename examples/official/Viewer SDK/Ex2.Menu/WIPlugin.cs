@@ -39,7 +39,7 @@ namespace WIExample
             }
         }
 
-        ToolStripItem m_ToolStripItem = null;
+        private IVRRegisteredCommand pCommand;
 
         /// <summary>
         /// Called when attaching the plugin to the user interface.
@@ -53,17 +53,10 @@ namespace WIExample
         public bool CreatePlugin(IVRViewerSdk viewer)
         {
             // Create a menu item called "Example 2".
-            m_ToolStripItem = viewer.UI.PluginMenu.DropDownItems.Add("Example 2");
-            m_ToolStripItem.Click += new EventHandler(m_ToolStripItem_Click);
+            pCommand = viewer.CommandManager.RegisterPluginMenuCommand(
+                getNames: () => new[] {"Example 2"},
+                execute: () => MessageBox.Show("Hello there, this is example 2"));
             return true;
-        }
-
-        /// <summary>
-        /// Called when "Example 2" menu item is clicked.
-        /// </summary>
-        void m_ToolStripItem_Click(object sender, EventArgs e)
-        {
-            MessageBox.Show("Hello there, this is example 2");
         }
 
         /// <summary>
@@ -77,10 +70,8 @@ namespace WIExample
         /// </returns>
         public bool DestroyPlugin(IVRViewerSdk viewer)
         {
-            m_ToolStripItem.Click -= m_ToolStripItem_Click;
             // Remove "Example 2" menu item from the plugin menu.
-            viewer.UI.PluginMenu.DropDownItems.Remove(m_ToolStripItem);
-            m_ToolStripItem = null;
+            pCommand.Unregister();
             return true;
         }
     }

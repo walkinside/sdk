@@ -3,7 +3,7 @@ Virtual Room Client Examples
 
 ## Using Example Projects
 
-To use examples in this folder, install COMOS Walkinside 10.2 SP1 64-bit
+To use examples in this folder, install COMOS Walkinside 10.2 64-bit
 or 32-bit in "Just Me" mode ("All Users" will not work), then open 
 `VirtualRoomClientLibraryExamplesFor64BitWalkinside.sln` or 
 `VirtualRoomClientLibraryExamplesFor32BitWalkinside.sln` accordingly 

@@ -14,31 +14,26 @@ namespace WIExample
 {
     public partial class MainForm : VRForm
     {
-        ToolStripItem m_Item = null;
+        private readonly IVRRegisteredCommand pCommand;
         public MainForm()
         {
             InitializeComponent();
             // Create a menu item in the 3D Context Menu, called "Example 6".
-            m_Item = SDKViewer.UI.Control.ContextMenuStrip.Items.Add("Example 6");
-            // Attach a listener to detect when the Context menu opens.
-            m_Item.Click += new EventHandler(Ex6ContextMenu_Click);
+            pCommand = SDKViewer.CommandManager.RegisterGeometryCommand(
+                result => new[] { "Example 6" },
+                Ex6ContextMenu_Click
+            );
         }
 
         protected override void OnClosing(CancelEventArgs e)
         {
-            // Remove the listener from our context menu item.
-            m_Item.Click -= new EventHandler(Ex6ContextMenu_Click);
             // Remove the menu item "Example 6" from the 3D Context Menu.
-            SDKViewer.UI.Control.ContextMenuStrip.Items.Remove(m_Item);
-            // Remove the reference to the menu item object.
-            m_Item = null;
+            pCommand.Unregister();
             base.OnClosing(e);
         }
 
-        void Ex6ContextMenu_Click(object sender, EventArgs e)
+        void Ex6ContextMenu_Click(VRRayCastResult res)
         {
-            // Get the click information from the Tag property as a VRRaycastResult type.
-            VRRayCastResult res = SDKViewer.UI.Control.ContextMenuStrip.Tag as VRRayCastResult;
             // The Point2D contains the pixel position in 3D window space.
             m_RichTextBox.Text = "Clicked on window position = " + res.Point2D.ToString();
             // The position contains the 3D coordinate where the user clicked on the element.

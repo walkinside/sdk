@@ -38,14 +38,14 @@ namespace WIExample
         {
             // When the user closes a new model the text in the rich text box is updated.
             // Note this is almost not noticeable, as due to the layout opening a project could trigger closing of this form.
-            m_RichTextBox.Text = "Closed the project = " + e.Project.FileName;
+            m_RichTextBox.Text = "Closed the project = " + e.Project.Name;
         }
 
         void ProjectManager_OnProjectOpen(object sender, VRProjectEventArgs e)
         {
             // When the user opens a new model the text in the rich text box is updated.
             // Note this is almost not noticeable, as due to the layout opening a project could trigger closing of this form.
-            m_RichTextBox.Text = "Opened a new project = " + e.Project.FileName;
+            m_RichTextBox.Text = "Opened a new project = " + e.Project.Name;
         }
 
         void BranchManager_SelectionChanged(object sender, VRBranchesEventArgs e)

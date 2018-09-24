@@ -12,20 +12,20 @@ namespace WIExample
 {
     public partial class MainForm : VRForm
     {
-        ToolStripMenuItem m_Item = null;     // The reference to the menu item in ContextMenu3D of example 7
-        ToolStripItem m_ItemCreate = null;   // The reference to the sub menu item "Create" of example 7
-        ToolStripItem m_ItemDestroy = null;  // The reference to the sub menu item "Destroy" of example 7
+        private readonly IVRRegisteredCommand pCreateCommand;
+        private readonly IVRRegisteredCommand pDestroyCommand;
         public MainForm()
         {
             InitializeComponent();
             // Create a menu item in the 3D Context Menu, called "Example 7".
-            m_Item = SDKViewer.UI.Control.ContextMenuStrip.Items.Add("Example 7") as ToolStripMenuItem;
-            // Create sub menu items to create and destroy labels.
-            m_ItemCreate = m_Item.DropDownItems.Add("Create Label");
-            m_ItemDestroy = m_Item.DropDownItems.Add("Destroy Label");
-            // Attach a listener to detect when the user clicked create or destroy menu.
-            m_ItemCreate.Click += new EventHandler(m_ItemCreate_Click);
-            m_ItemDestroy.Click += new EventHandler(m_ItemDestroy_Click);
+            pCreateCommand = SDKViewer.CommandManager.RegisterGeometryCommand(
+                result => new[] {"Example 7", "Create Label"},
+                m_ItemCreate_Click
+            );
+            pDestroyCommand = SDKViewer.CommandManager.RegisterGeometryCommand(
+                result => new[] { "Example 7", "Destroy Label" },
+                m_ItemDestroy_Click
+            );
 
             // Create a group of labels in the 3D engine.
             m_LabelGroup = SDKViewer.CreateLabelGroup("Example7");
@@ -35,10 +35,8 @@ namespace WIExample
         Dictionary<uint, IVRLabel> m_Labels = new Dictionary<uint,IVRLabel>(); 
         IVRLabelGroup m_LabelGroup = null; // The label group owned by this plugin.
 
-        void m_ItemDestroy_Click(object sender, EventArgs e)
+        void m_ItemDestroy_Click(VRRayCastResult res)
         {
-            // Get the click information from the Tag property as a VRRaycastResult type.
-            VRRayCastResult res = SDKViewer.UI.Control.ContextMenuStrip.Tag as VRRayCastResult;
             IVRLabel label = null;
 
             // Try to get the label instance matching the ID. If not found, probably user clicked on a walkinside redline, or a label from other plugin.
@@ -59,11 +57,8 @@ namespace WIExample
             }
         }
 
-        void m_ItemCreate_Click(object sender, EventArgs e)
+        void m_ItemCreate_Click(VRRayCastResult res)
         {
-            // Get the click information from the Tag property as a VRRaycastResult type.
-            VRRayCastResult res = SDKViewer.UI.Control.ContextMenuStrip.Tag as VRRayCastResult;
-
             // Create the label at the location the user clicked, and set the text of the label to "New Label" and a next line with the position.
             IVRLabel label = m_LabelGroup.Add("New Label\n"+res.Position.ToString("f2"), res.Position);
             // Add it to the dictionary, for later reference (see m_ItemDestroy_Click)
@@ -75,12 +70,8 @@ namespace WIExample
         protected override void OnClosing(CancelEventArgs e)
         {
             // Remove the listener from our context menu items.
-            m_ItemCreate.Click -= new EventHandler(m_ItemCreate_Click);
-            m_ItemDestroy.Click -= new EventHandler(m_ItemDestroy_Click);
-
-            // Remove the menu item "Example 7" from the 3D Context Menu.
-            SDKViewer.UI.Control.ContextMenuStrip.Items.Remove(m_Item);
-
+            pCreateCommand.Unregister();
+            pDestroyCommand.Unregister();
 
             m_Labels.Clear(); // clear the dictionary, no need for it anymore.
             // Remove all the labels from the 3D engine by clearing labelgroups and Delete the label group from the 3D engine.
@@ -88,10 +79,6 @@ namespace WIExample
             m_LabelGroup.Dispose();
             m_LabelGroup = null;
 
-            // Remove the reference to the menu items objects.
-            m_Item = null;
-            m_ItemCreate = null;
-            m_ItemDestroy = null;
             base.OnClosing(e);
         }
     }

@@ -31,14 +31,25 @@ namespace WIExample
             }
         }
 
-        ToolStripMenuItem m_ToolStripItem;
+        private IVRRegisteredCommand pCommand;
+        private ProjectAccessHistoryForm pForm;
         private IVRViewerSdk m_Viewer = null;
 
         public bool CreatePlugin(IVRViewerSdk viewer)
         {
             m_Viewer = viewer;
-            m_ToolStripItem = viewer.UI.PluginMenu.DropDownItems.Add(m_Descriptor.ShortDescription) as ToolStripMenuItem;
-            viewer.UI.RegisterVRFormWithMenu(Keys.NoName, m_ToolStripItem, typeof(ProjectAccessHistoryForm));
+            pCommand = viewer.CommandManager.RegisterPluginMenuCommand(
+                getNames: () => new[] { "Example 8" },
+                execute: () =>
+                {
+                    pForm = new ProjectAccessHistoryForm
+                    {
+                        DockAreas = WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight
+                    };
+                    pForm.Show();
+                    pForm.Closing += (o, e) => { pForm = null; };
+                },
+                getState: () => pForm == null ? VRCommandState.Available : VRCommandState.Disabled);
 
             viewer.ProjectManager.OnProjectOpen += ProjectManager_OnProjectOpen;
 
@@ -59,9 +70,8 @@ namespace WIExample
 
         public bool DestroyPlugin(IVRViewerSdk viewer)
         {
-            viewer.UI.UnregisterVRFORM(m_ToolStripItem, typeof(ProjectAccessHistoryForm));
-            viewer.UI.PluginMenu.DropDownItems.Remove(m_ToolStripItem);
-            m_ToolStripItem = null;
+            pCommand.Unregister();
+            pForm?.Dispose();
 
             return true;
         }

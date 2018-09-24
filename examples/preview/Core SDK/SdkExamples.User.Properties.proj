@@ -25,6 +25,7 @@
     <VRWeifenLuoHintPathX64>$(VRWalkinsideInstallationPathX64)\WeifenLuo.WinFormsUI.Docking.dll</VRWeifenLuoHintPathX64>
     <VRDataSdkHintPathX64>$(VRWalkinsideInstallationPathX64)\WalkinsideDataSDK.dll</VRDataSdkHintPathX64>
     <VRVirtualRoomClientLibraryHintPathX64>$(VRWalkinsideInstallationPathX64)\walkinside.its.protocol.dll</VRVirtualRoomClientLibraryHintPathX64>
+    <VRWalkinsideViewerPathX64>$(VRWalkinsideInstallationPathX64)\WalkinsideNet2.exe</VRWalkinsideViewerPathX64>
   </PropertyGroup>
   <PropertyGroup Condition =" '$(VRWalkinsideInstallationPathX86)' != '' ">
     <VRPluginOutputPathX86>$(VRWalkinsideInstallationPathX86)\plugins\application\</VRPluginOutputPathX86>
@@ -34,6 +35,7 @@
     <VRWeifenLuoHintPathX86>$(VRWalkinsideInstallationPathX86)\WeifenLuo.WinFormsUI.Docking.dll</VRWeifenLuoHintPathX86>
     <VRDataSdkHintPathX86>$(VRWalkinsideInstallationPathX86)\WalkinsideDataSDK.dll</VRDataSdkHintPathX86>
     <VRVirtualRoomClientLibraryHintPathX86>$(VRWalkinsideInstallationPathX86)\walkinside.its.protocol.dll</VRVirtualRoomClientLibraryHintPathX86>
+    <VRWalkinsideViewerPathX86>$(VRWalkinsideInstallationPathX86)\WalkinsideNet2.exe</VRWalkinsideViewerPathX86>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Platform)' == 'x64' ">
     <VRPluginOutputPath>$(VRPluginOutputPathX64)</VRPluginOutputPath>
@@ -43,6 +45,7 @@
     <VRWeifenLuoHintPath>$(VRWeifenLuoHintPathX64)</VRWeifenLuoHintPath>
     <VRDataSdkHintPath>$(VRDataSdkHintPathX64)</VRDataSdkHintPath>
     <VRVirtualRoomClientLibraryHintPath>$(VRVirtualRoomClientLibraryHintPathX64)</VRVirtualRoomClientLibraryHintPath>
+    <VRWalkinsideViewerPath>$(VRWalkinsideViewerPathX64)</VRWalkinsideViewerPath>
     <vrMissingSdkMessage
       >Do you have COMOS Walkinside 10.2 64-bit installed? (Must be a &quot;Just Me&quot; installation, not &quot;All Users&quot;)</vrMissingSdkMessage>
   </PropertyGroup>
@@ -54,6 +57,7 @@
     <VRWeifenLuoHintPath>$(VRWeifenLuoHintPathX86)</VRWeifenLuoHintPath>
     <VRDataSdkHintPath>$(VRDataSdkHintPathX86)</VRDataSdkHintPath>
     <VRVirtualRoomClientLibraryHintPath>$(VRVirtualRoomClientLibraryHintPathX86)</VRVirtualRoomClientLibraryHintPath>
+    <VRWalkinsideViewerPath>$(VRWalkinsideViewerPathX86)</VRWalkinsideViewerPath>
     <vrMissingSdkMessage
       >Do you have COMOS Walkinside 10.2 32-bit installed? (Must be a &quot;Just Me&quot; installation, not &quot;All Users&quot;)</vrMissingSdkMessage>
   </PropertyGroup>
