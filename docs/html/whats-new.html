@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.9.1"/>
-<title>COMOS Walkinside APIs: What&#39;s New in 10.2 SP3</title>
+<title>COMOS Walkinside APIs: What&#39;s New in 10.2 SP4</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -52,38 +52,118 @@ $(document).ready(function(){initNavTree('whats-new.html','');});
 <div id="doc-content">
 <div class="header">
   <div class="headertitle">
-<div class="title">What's New in 10.2 SP3 </div>  </div>
+<div class="title">What's New in 10.2 SP4 </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>As this is a Service Pack release, it maintains compatibility guarantees relative to 10.2. You can find details of those guarantees in <a class="el" href="policy.html">API Compatibility Policy</a>.</p>
+<p>Please note that this release is expected to be the last service pack before 10.3. When 10.3 is released, we will take the opportunity to remove any or all deprecated API members, according to the <a class="el" href="policy.html">API Compatibility Policy</a>.</p>
+<h2>Policy Change Notice </h2>
+<p>We would like to let you know in advance that our <a class="el" href="policy.html">API Compatibility Policy</a> is going to be revised in the next release. Our current policy was designed with much shorter release cycles in mind. In practice it forces us to keep irrelevant APIs for many years, slowing down innovation and new development.</p>
+<p>The upcoming changes will address that and will allow us to have shorter deprecation and removal periods.</p>
+<p>Until the new policy is in place we commit to the guarantees provided by the current version of the policy.</p>
 <h2>Viewer SDK </h2>
 <h3>Notable Additions</h3>
 <ul>
-<li><code>IVRViewerSdkForPreview</code> has a new method <code>UnregisterForm</code> that unregisters a form that uses a non-default constructor (constructor with arguments).</li>
-<li><code>IVRViewerSdkForPreview</code> has two new methods <code>ConvertToCustomCS</code> and <code>ConvertFromCustomCS</code> that convert internal 3D coordinates to/from custom coordinate system defined in the "World Coordinate" settings.</li>
+<li><code>ViewerSdk</code> has a new property <code>CommandManager</code> that allows SDK developers to register commands which can be displayed in diverse area of the GUI like context menu for example.</li>
 </ul>
 <h3>Notable Deprecations</h3>
 <ul>
-<li><code>VRProductInfo</code> class was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRAnimationBinding</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>IVRAnimationEntity</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>IVRAnimationManager</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>IVRCredentialProvider</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRInterpolable&lt;T&gt;</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>IVRProject.AnimationManager</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>IVRProject.Credentials</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProject.DataDisposition</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>IVRProject.FileName</code> was deprecated because it is not useful for SDK developers and has non-obvious values for compressed and online projects.</li>
+<li><code>IVRProject.FolderPath</code> was deprecated because it is not useful for SDK developers and has non-obvious values for compressed and online projects.</li>
+<li><code>IVRProject.GetGlobalScene</code> was deprecated because scenes are not useful for SDK developers.</li>
+<li><code>IVRProject.GetGlobalToLocalScene</code> was deprecated because scenes are not useful for SDK developers.</li>
+<li><code>IVRProject.GetLocalToGlobalScene</code> was deprecated because scenes are not useful for SDK developers.</li>
+<li><code>IVRProject.GetScene</code> was deprecated because scenes are not useful for SDK developers.</li>
+<li><code>IVRProject.GlobalName</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProject.HasChildren</code> was deprecated because it is redundant.</li>
+<li><code>IVRProject.ID</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProject.IsMainProject</code> was deprecated because it is redundant.</li>
+<li><code>IVRProject.LocalName</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProject.LocalProjectID</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProject.Projects</code> was deprecated because it is only duplicating <code>IVRProject.ChildProjects</code>.</li>
+<li><code>IVRProject.ReadOnly</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProject.SaveAll</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProject.Scenes</code> was deprecated because scenes are not useful for SDK developers.</li>
+<li><code>IVRProject.SmartObjectManager</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>IVRProjectExtensions.GetMainScene</code> was deprecated because scenes are not useful for SDK developers.</li>
+<li><code>IVRProjectManager.AttachProject</code> was deprecated because we wish to restrict project loading/unloading to the viewer application only.</li>
+<li><code>IVRProjectManager.Credentials</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProjectManager.DetachModel</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProjectManager.DetachProject</code> was deprecated because we wish to restrict project loading/unloading to the viewer application only.</li>
+<li><code>IVRProjectManager.FindDatabaseValue</code> was deprecated because it is redundant.</li>
+<li><code>IVRProjectManager.GetProjectFromSceneID</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProjectManager.GlobalProject</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProjectManager.LoadAndAttachModel</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProjectManager.LoadProject</code> was deprecated because we wish to restrict project loading/unloading to the viewer application only.</li>
+<li><code>IVRProjectManager.OnBranchHide</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProjectManager.OnBranchShow</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProjectManager.Projects</code> was deprecated because it is redundant.</li>
+<li><code>IVRProjectManager.RestaureSettingState</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProjectManager.SaveSettingState</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProjectManager.SetSystemPivot</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRProjectManager.Scenes</code> was deprecated because scenes are not useful for SDK developers.</li>
+<li><code>IVRScene</code> was deprecated because scenes are not useful for SDK developers.</li>
+<li><code>IVRSmartObjectCategory</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>IVRSmartObjectManager</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>IVRUIManager.Add3DControlKeyEvent</code> was deprecated because we wish to decouple our API from Windows Forms. SDK developers using it.</li>
+<li><code>IVRSmartObjectManager</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>IVRUIManager.BeginPercentage</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRUIManager.Busy</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRUIManager.CloseAllForms</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRUIManager.CloseForm</code> was deprecated because we wish to decouple our API from Windows Forms.</li>
+<li><code>IVRUIManager.Control.ContextMenuStrip</code> was deprecated because we wish to decouple our API from Windows Forms.</li>
+<li><code>IVRUIManager.Coordinate</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRUIManager.DockPanel</code> was deprecated because we wish to decouple our API from Windows Forms.</li>
+<li><code>IVRUIManager.EndPercentage</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRUIManager.GetForm</code> was deprecated because we wish to decouple our API from Windows Forms.</li>
+<li><code>IVRUIManager.GetMenu</code> was deprecated because we wish to decouple our API from Windows Forms.</li>
+<li><code>IVRUIManager.Handle3DControlKeyEvent</code> was deprecated because we wish to decouple our API from Windows Forms.</li>
+<li><code>IVRUIManager.InvokeRequired</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRUIManager.LoadUILayout</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRUIManager.MainContainer</code> was deprecated because we wish to decouple our API from Windows Forms.</li>
+<li><code>IVRUIManager.MainForm</code> was deprecated because we wish to decouple our API from Windows Forms.</li>
+<li><code>IVRUIManager.Menu</code> was deprecated because we wish to decouple our API from Windows Forms. Please use 'IVRViewerSdk.CommandManager.RegisterPluginMenuCommand&lt;tt&gt; -IVRUIManager.Minimized&lt;tt&gt;was deprecated because it is not useful for SDK developers. -IVRUIManager.NoWindows&lt;tt&gt;was deprecated because it is not useful for SDK developers. -IVRUIManager.NewPercentStep&lt;tt&gt;was deprecated because it is not useful for SDK developers. -IVRUIManager.OpenForm&lt;tt&gt;was deprecated because we wish to decouple our API from Windows Forms. -IVRUIManager.pOnProgress&lt;tt&gt;was deprecated because it is not useful for SDK developers. -IVRUIManager.ProgressBar&lt;tt&gt;was deprecated because we wish to decouple our API from Windows Forms. -IVRUIManager.Refresh&lt;tt&gt;was deprecated because there is an equivalent RefreshViewport method. -IVRUIManager.RegisterVRForm*<code>were deprecated because we wish to decouple our API from Windows Forms. -</code>IVRUIManager.SaveLayoutAtExit&lt;tt&gt;was deprecated because it is not useful for SDK developers. -IVRUIManager.SaveUILayout&lt;tt&gt;was deprecated because it is not useful for SDK developers. -IVRUIManager.SetForeGround&lt;tt&gt;was deprecated because it is not useful for SDK developers. -IVRUIManager.SetStreaming&lt;tt&gt;was deprecated because it is not useful for SDK developers. -IVRUIManager.SetPercentage&lt;tt&gt;was deprecated because it is not useful for SDK developers. -IVRUIManager.ShowOnly&lt;tt&gt;was deprecated because it is not useful for SDK developers. -IVRUIManager.ShowToolbar&lt;tt&gt;was deprecated because we wish to decouple our API from Windows Forms. -IVRUIManager.SortToolbars&lt;tt&gt;was deprecated because it is not useful for SDK developers. -IVRUIManager.StatusBar&lt;tt&gt;was deprecated because we wish to decouple our API from Windows Forms. -IVRUIManager.StatusCoordinates&lt;tt&gt;was deprecated because we wish to decouple our API from Windows Forms. -IVRUIManager.StatusMessage&lt;tt&gt;was deprecated because we wish to decouple our API from Windows Forms. -IVRUIManager.StreamingIcon&lt;tt&gt;was deprecated because it is not useful for SDK developers and will throw NotImplementedException. -IVRUIManager.UnregisterVRFORM*<code>were deprecated because we wish to decouple our API from Windows Forms. -</code>IVRUIManager.UseDocking&lt;tt&gt;was deprecated because it is not useful for SDK developers. -IVRUserNotificationProvider<code>was deprecated because it is not useful for SDK developers. -</code>IVRViewerSdk.AnimationEntityDeleted&lt;tt&gt;was deprecated because it is not useful for SDK developers. -IVRViewerSdk.CacheServiceData` was deprecated because it is not useful for SDK developers and has no effect anymore.</li>
+<li><code>IVRViewerSdk.FeatureActivation</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRViewerSdk.Is64BitMode</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRViewerSdk.PauseStreaming</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRViewerSdk.ResumeStreaming</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>IVRViewerSdk.SDKHandle</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>VRAnimationEntityType</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>VRCurve&lt;T&gt;</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>VRCurveDataPoint&lt;T&gt;</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>VRCurvePath&lt;T&gt;</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>VRCurvePointEventHandler&lt;T&gt;</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>VRCurveTypeCollection&lt;T&gt;</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>VRLocalDataDisposition</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>VROnlineDataDisposition</code> was deprecated because we are not aware of any SDK developers using it.</li>
+<li><code>VRUserNotificationModality</code> was deprecated because it is not useful for SDK developers.</li>
+<li><code>VRUserNotificationSeverity</code> was deprecated because it is not useful for SDK developers.</li>
 </ul>
 <p>Full details can be found in Viewer SDK API Reference.</p>
 <h2>Data SDK </h2>
 <h3>Notable Additions</h3>
 <ul>
-<li><code>IProject</code> has a new method <code>GetNamespacedSettings</code>. It gives access to a settings storage, which is isolated inside a namespace from any settings of Walkinside or other plug-ins. This is a follow-up to the addition of similar API to Viewer SDK in the previous release.</li>
+<li><p class="startli"><code>IBranchManager</code> interface has new method <code>Delete</code> that allows to delete all branches of a certain kind (except CAD branches). It may be useful to clean-up the project before re-generating its standard or custom FRT.</p>
+<p class="startli">Resolves <a href="https://github.com/walkinside/sdk/issues/3">issue 3</a>.</p>
+</li>
 </ul>
 <p>Full details can be found in Data SDK API Reference.</p>
 <h2>Command-Line Interfaces (CLIs) </h2>
 <h3>Notable Additions</h3>
-<ul>
-<li>New <code>4D Import Tool</code> was added as a way to populate Walkinside project with 4D simulation data. Please find <code>4d.exe</code> in your installed folder. You can find more information on the new 4D simulation feature in the Viewer user manual. </li>
-</ul>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Apr 20 2018 16:30:46 for COMOS Walkinside APIs by
+    <li class="footer">Generated on Thu Jul 19 2018 12:36:21 for COMOS Walkinside APIs by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>

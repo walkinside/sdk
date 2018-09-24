@@ -73,7 +73,7 @@ $(document).ready(function(){initNavTree('walkinside-js.html','');});
 <p>After the script is loaded you can start using the global <code>walkinside</code> object. Its interface is described in the "API Reference" section below.</p>
 <h3>Versioning</h3>
 <p>WalkinsideJS follows semantic versioning scheme (<a href="http://semver.org">http://semver.org</a>) to indicate to clients when there is compatibility breakage.</p>
-<p>Current release is versioned as 0.1.0.</p>
+<p>Current release is versioned as 0.2.0.</p>
 <h3>API Reference</h3>
 <h4>Global "walkinside" object</h4>
 <blockquote class="doxtable">
@@ -132,13 +132,28 @@ $(document).ready(function(){initNavTree('walkinside-js.html','');});
 <blockquote class="doxtable">
 <p>project.jumpToHome() </p>
 </blockquote>
-<p>Instantly moves camera to the initial viewpoint of the project. </p>
+<p>Instantly moves camera to the initial viewpoint of the project.</p>
+<blockquote class="doxtable">
+<p>project.applyColorsAsync(options) &rarr; Promise&lt;void&gt; </p>
+</blockquote>
+<p>New since 0.2.0.</p>
+<p>Resets all colors currently applied, if any, and applies a new set of colors to a set of tagged objects. Colors are not persisted between sessions: colors will not be restored when you reopen a project.</p>
+<p>The <code>options</code> parameter is an object with the following attributes:</p>
+<ul>
+<li><code>colorGroups</code>: an array of objects describing how to apply which colors to which tagged objects.</li>
+</ul>
+<p>colorGroup has 3 attributes:</p><ul>
+<li><code>color</code>: an html color (ex: '#00FF00', 'lime')</li>
+<li><code>opacity</code>: an optional opacity in the range [0.0-1.0]. 1.0 if not set.</li>
+<li><code>tagValues</code>: a list of tags to apply the colorization to</li>
+</ul>
+<p>Return value is a promise, which is resolved as soon as colors are applied. </p>
 </div></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Fri Apr 20 2018 09:30:41 for COMOS Walkinside Server Web APIs by
+    <li class="footer">Generated on Wed Jul 18 2018 16:36:34 for COMOS Walkinside Server Web APIs by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.9.1 </li>
   </ul>
