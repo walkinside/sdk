@@ -56,4 +56,7 @@ for the duration of the current session.
 
 Uses entities to persistently store the history of who opened the project.
 
+### Example 10: Walkinside Server side plugin
 
+Uses the new command web api to comunicate the Viewer SDK and execute actions on the server side direnctly from the web client.
+See https://sdk.walkinside.com/web-api-docs/index.html for more information. 
