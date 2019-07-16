@@ -1,0 +1,129 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <title>COMOS WalkinsideJS Example</title>
+  <style>
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0px;
+      overflow: hidden;
+    }
+
+    #wi-viewer-container {
+      float: left;
+      height: 100%;
+      width: 100%;
+    }
+
+    .info-panel-item {
+      width: 100%;
+      border-width: 0px;
+      padding: 0px;
+    }
+
+    #wi-info-panel {
+      position: absolute;
+      float: left;
+      display: block;
+      overflow: auto;
+      width: 150px;
+      opacity: 0.7;
+    }
+
+  </style>
+</head>
+
+<body onload="createView()">
+  <div id='wi-viewer-container'></div>
+  <div id="wi-info-panel">
+    <label class="info-panel-item" id="wi-color-label" for="wi-color-labels">Color:</label>
+    <input class="info-panel-item" type="text" id="wi-color-labels" value="empty" />
+    <label class="info-panel-item" for="wi-label-clicked">Clicked label:</label>
+    <input class="info-panel-item" type="text" id="wi-label-clicked" value="empty" />
+    <input class="info-panel-item" type="button" id="wi-load-labels" value="Load Labels" />
+    <input class="info-panel-item" type="button" id="wi-color-change" value="Change Label Color" />
+    <input class="info-panel-item" type="button" id="wi-get-labels" value="Get Label Texts" />
+    <ul id="label-texts" />
+  </div>
+  <script src="http://pl1esbio0032nb/walkinside-js/walkinside.js"></script>
+  <script>
+    function createView() {
+      console.info('creating view...');
+      walkinside.createViewAsync({
+        backendAddress: 'http://pl1esbio0032nb/walkinside-js',
+        targetElementId: 'wi-viewer-container'
+      }).then(function (view) {
+        console.info('view created.');
+        console.info('loading project...');
+        var selectElem = document.getElementById('wi-load-labels');
+        selectElem.addEventListener(
+          'click',
+          function () {
+            console.info('loading labels');
+            view.executeCommandAsync({
+              commandName:  'wi.viewersdk.example10.create-labels',
+            }).then(function () {
+              console.info('Labels loaded.');
+            }).catch(console.error);
+          },
+          true);
+        var homeElem = document.getElementById('wi-color-change');
+        homeElem.addEventListener(
+          'click',
+          function () {
+            var tagElem = document.getElementById('wi-color-labels');
+            var htmlColor = tagElem.value;
+            console.info('coloring labels in "' + htmlColor + '"...');
+            view.executeCommandAsync({
+              commandName:  'wi.viewersdk.example10.change-color',
+              commandInput : htmlColor
+            }).then(function () {
+              console.info('color changed!');
+            }).catch(console.error);
+          },
+          true);
+
+        var getLabelsElem = document.getElementById('wi-get-labels');
+        getLabelsElem.addEventListener(
+          'click',
+          function () {
+            view.executeRequestAsync({
+              requestName:  'wi.viewersdk.example10.get-label-texts'
+            }).then(function (result) {
+              
+              var list = document.getElementById('label-texts');
+              list.innerHTML = '';
+
+              result.forEach(function(label) {
+                var item = document.createElement("LI");
+                item.appendChild(document.createTextNode(label));
+                list.appendChild(item);
+              });
+              
+            }).catch(console.error);
+          },
+          true);
+          
+        view.onNotify("wi.viewersdk.example10.label-clicked", function (input) {
+          var tagElem = document.getElementById('wi-label-clicked');
+          tagElem.value = input;
+        });
+
+        return view.loadProjectAsync({
+          projectAddress: 'http://PL1ESBIO0032NB/WalkinsidePortalService/api/v1/project-groups/34b1e177-e96f-4917-aa3d-a9cf00b74d9e'
+        });
+      }).then(function (project) {
+        console.info('project loaded:');
+        console.info(project);
+      });
+    }
+  </script>
+</body>
+
+</html>
