@@ -1,0 +1,3 @@
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\exe\Release\plugins\application\CoreSdkExample2.dll
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Core\Example 2. Countdown\obj\x64\Release\Example 2. Countdown.csproj.CoreCompileInputs.cache
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Core\Example 2. Countdown\obj\x64\Release\CoreSdkExample2.dll

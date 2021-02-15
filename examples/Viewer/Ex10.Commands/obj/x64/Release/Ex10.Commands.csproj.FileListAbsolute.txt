@@ -1,0 +1,5 @@
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\exe\Release\plugins\application\WIExample10.dll
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\exe\Release\plugins\application\WIExample10.pdb
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Viewer\Ex10.Commands\obj\x64\Release\Ex10.Commands.csproj.CoreCompileInputs.cache
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Viewer\Ex10.Commands\obj\x64\Release\WIExample10.dll
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Viewer\Ex10.Commands\obj\x64\Release\WIExample10.pdb

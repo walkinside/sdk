@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Condition="Exists('..\..\..\Walkinside.Variables.proj')" Project ="..\..\..\Walkinside.Variables.proj" />
+  <PropertyGroup>
+    <Platform Condition=" '$(Platform)' == '' ">x64</Platform>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <VRWalkinsideInstallationPathX64>$(VROutputPath)</VRWalkinsideInstallationPathX64>
+  </PropertyGroup>
+  <PropertyGroup Condition =" '$(VRWalkinsideInstallationPathX64)' != '' ">
+    <VRPluginOutputPathX64>$(VRWalkinsideInstallationPathX64)\plugins\application\</VRPluginOutputPathX64>
+    <VRAppOutputPathX64>$(VRWalkinsideInstallationPathX64)\</VRAppOutputPathX64>
+    <VRViewerSDKHintPathX64>$(VRWalkinsideInstallationPathX64)\Comos.Walkinside.Viewer.dll</VRViewerSDKHintPathX64>
+    <VRCoreSDKHintPathX64>$(VRWalkinsideInstallationPathX64)\CoreSdkNet.dll</VRCoreSDKHintPathX64>
+    <VRWeifenLuoHintPathX64>$(VRWalkinsideInstallationPathX64)\WeifenLuo.WinFormsUI.Docking.dll</VRWeifenLuoHintPathX64>
+    <VRDataSdkHintPathX64>$(VRWalkinsideInstallationPathX64)\Comos.Walkinside.Data.dll</VRDataSdkHintPathX64>
+    <VRVirtualRoomClientLibraryHintPathX64>$(VRWalkinsideInstallationPathX64)\walkinside.its.protocol.dll</VRVirtualRoomClientLibraryHintPathX64>
+    <VRWalkinsideViewerPathX64>$(VRWalkinsideInstallationPathX64)\Walkinside.exe</VRWalkinsideViewerPathX64>
+    <VRWalkinsideCommonSdkPathX64>$(VRWalkinsideInstallationPathX64)\Comos.Walkinside.Common.dll</VRWalkinsideCommonSdkPathX64>
+    <VRPluginOutputPath>$(VRPluginOutputPathX64)</VRPluginOutputPath>
+    <VRAppOutputPath>$(VRAppOutputPathX64)</VRAppOutputPath>
+    <VRViewerSDKHintPath>$(VRViewerSDKHintPathX64)</VRViewerSDKHintPath>
+    <VRCoreSDKHintPath>$(VRCoreSDKHintPathX64)</VRCoreSDKHintPath>
+    <VRWeifenLuoHintPath>$(VRWeifenLuoHintPathX64)</VRWeifenLuoHintPath>
+    <VRDataSdkHintPath>$(VRDataSdkHintPathX64)</VRDataSdkHintPath>
+    <VRVirtualRoomClientLibraryHintPath>$(VRVirtualRoomClientLibraryHintPathX64)</VRVirtualRoomClientLibraryHintPath>
+    <VRWalkinsideViewerPath>$(VRWalkinsideViewerPathX64)</VRWalkinsideViewerPath>
+    <vrMissingSdkMessage>Please set VRWalkinsideInstallationPathX64 to walkinside location</vrMissingSdkMessage>
+  </PropertyGroup>
+  <Target Name="RequireViewerSdk">
+    <Error Text="Cannot find COMOS Walkinside Viewer SDK at &quot;$(VRViewerSDKHintPath)&quot;. $(vrMissingSdkMessage)"
+           Condition=" !Exists('$(VRViewerSDKHintPath)')" />
+  </Target>
+  <Target Name="RequireCoreSDK">
+    <Error Text="Cannot find COMOS Walkinside Core SDK at &quot;$(VRCoreSDKHintPath)&quot;. $(vrMissingSdkMessage)"
+           Condition=" !Exists('$(VRCoreSDKHintPath)')" />
+  </Target>
+  <Target Name="RequireDataSDK">
+    <Error Text="Cannot find COMOS Walkinside Data SDK at &quot;$(VRDataSdkHintPath)&quot;. $(vrMissingSdkMessage)"
+           Condition=" !Exists('$(VRDataSdkHintPath)') " />
+  </Target>
+  <Target Name="RequireVirtualRoomClientLibrary">
+    <Error Text="Cannot find COMOS Walkinside Virtual Room Client Library at &quot;$(VRVirtualRoomClientLibraryHintPath)&quot;. $(vrMissingSdkMessage)"
+           Condition=" !Exists('$(VRVirtualRoomClientLibraryHintPath)') " />
+  </Target>
+  <Target Name="RequireWeifenLuo">
+    <Error Text="Cannot find WeifenLuo at &quot;$(VRWeifenLuoHintPath)&quot;. $(vrMissingSdkMessage)"
+           Condition=" !Exists('$(VRWeifenLuoHintPath)')" />
+  </Target>
+</Project>

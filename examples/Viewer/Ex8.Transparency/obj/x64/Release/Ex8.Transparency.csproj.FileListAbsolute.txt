@@ -1,0 +1,7 @@
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\exe\Release\plugins\application\WIExample8.dll
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\exe\Release\plugins\application\WIExample8.pdb
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Viewer\Ex8.Transparency\obj\x64\Release\WIExample.MainForm.resources
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Viewer\Ex8.Transparency\obj\x64\Release\Ex8.Transparency.csproj.GenerateResource.cache
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Viewer\Ex8.Transparency\obj\x64\Release\Ex8.Transparency.csproj.CoreCompileInputs.cache
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Viewer\Ex8.Transparency\obj\x64\Release\WIExample8.dll
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Viewer\Ex8.Transparency\obj\x64\Release\WIExample8.pdb

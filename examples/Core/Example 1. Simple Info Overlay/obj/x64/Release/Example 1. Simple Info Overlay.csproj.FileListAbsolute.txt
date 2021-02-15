@@ -1,0 +1,4 @@
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\exe\Release\plugins\application\CoreSdkExample1.dll
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Core\Example 1. Simple Info Overlay\obj\x64\Release\Example 1. Simple Info Overlay.csprojAssemblyReference.cache
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Core\Example 1. Simple Info Overlay\obj\x64\Release\Example 1. Simple Info Overlay.csproj.CoreCompileInputs.cache
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Core\Example 1. Simple Info Overlay\obj\x64\Release\CoreSdkExample1.dll

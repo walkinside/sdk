@@ -1,0 +1,5 @@
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\exe\Release\DataSdkExample2.exe
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\exe\Release\DataSdkExample2.pdb
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Data\Example 2. FRT Generation\obj\x64\Release\Example 2. FRT Generation.csproj.CoreCompileInputs.cache
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Data\Example 2. FRT Generation\obj\x64\Release\DataSdkExample2.exe
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Data\Example 2. FRT Generation\obj\x64\Release\DataSdkExample2.pdb

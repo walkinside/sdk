@@ -1,0 +1,7 @@
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\exe\Release\plugins\application\WIExample4.dll
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\exe\Release\plugins\application\WIExample4.pdb
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Viewer\Ex4.ProjectAndBranches\obj\x64\Release\WIExample.MainForm.resources
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Viewer\Ex4.ProjectAndBranches\obj\x64\Release\Ex4.ProjectAndBranches.csproj.GenerateResource.cache
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Viewer\Ex4.ProjectAndBranches\obj\x64\Release\Ex4.ProjectAndBranches.csproj.CoreCompileInputs.cache
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Viewer\Ex4.ProjectAndBranches\obj\x64\Release\WIExample4.dll
+E:\Workdir\builds\7SgDcUMG\0\comos-walkinside\flamengo\Documentation\SDK\examples\Viewer\Ex4.ProjectAndBranches\obj\x64\Release\WIExample4.pdb
